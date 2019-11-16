@@ -158,7 +158,7 @@ def update_total_log_data(service, source_event_data):
             ["Inductee Email", "Total Points ("+str(date.today())+")", "Mentor 1:1", "Professional", "Event List", "Officer List"]
         ]
     }
-    update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_RANGE_HEADER, value_range_body)
+    update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_SHEET_RANGE_HEADER, value_range_body)
 
     # Overwrite to total log points body
     source_event_data_values = source_event_data.values()
@@ -173,7 +173,7 @@ def update_total_log_data(service, source_event_data):
             [",".join(val.officer_list) for val in source_event_data_values]    # officer list
         ]
     }
-    update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_RANGE_BODY, value_range_body)
+    update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_SHEET_RANGE_BODY, value_range_body)
 
 def update_inductee_list(service, source_event_data):
     # update inductee list
