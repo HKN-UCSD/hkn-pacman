@@ -11,7 +11,7 @@ https://developers.google.com/sheets/api/quickstart/python
 
 ## Install Setup
 ```
-pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib python-dotenv
 ```
 
 ## Cron Config
