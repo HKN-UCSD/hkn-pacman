@@ -180,7 +180,35 @@ def update_total_log_data(service, source_event_data):
     update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_SHEET_RANGE_BODY, value_range_body)
 
 def update_mentor_log_data(service, source_event_data):
-    pass
+    # Overwrite to total log points header
+    value_range_body = {
+        "majorDimension": Dimension.ROWS.value,
+        "values": [ 
+            ["Mentor Email", "Total Points ("+str(date.today())+")"]
+        ]
+    }
+    update_sheet(service, DESTINATION_MENTOR_TOTAL_SHEET_ID, DESTINATION_MENTOR_TOTAL_SHEET_RANGE_HEADER, value_range_body)
+
+    # index based on mentor source sheet column
+    source_mentor_email_index = 5
+
+    # mentor dictionary count
+    mentor_point_dict = {}
+
+    # for each mentor log
+    for row in values:
+        mentor_point_dict[row[source_mentor_email_index]] = mentor_point_dict.get(row[source_mentor_email_index].lower(), 0) + 1 
+    
+    # Overwrite to total log points body
+    mentor_point_dict_values = mentor_point_dict.values()
+    value_range_body = {
+        "majorDimension": Dimension.COLUMNS.value,
+        "values": [ 
+            source_event_data.keys(),                                           # email
+            [val.points for val in source_event_data_values],                   # total points
+        ]
+    }
+    update_sheet(service, DESTINATION_MENTOR_TOTAL_SHEET_ID, DESTINATION_MENTOR_TOTAL_SHEET_RANGE_BODY, value_range_body)
 
 def update_inductee_list(service, source_event_data):
     # update inductee list
@@ -206,14 +234,15 @@ def main():
     # get the sheet values of mentor log
     values = get_sheet(service, SOURCE_MENTOR_SHEET_ID, SOURCE_MENTOR_SHEET_RANGE)
     
+    # update mentor log data
+    update_mentor_total_log_data(service, values)
+
     # add mentor data into event data
     source_event_data = append_mentor_data(values, source_event_data)
 
     # update total log data
     update_total_log_data(service, source_event_data)
     
-    # update mentor log data
-    update_mentor_total_log_data(service, source_event_data)
 
 if __name__ == '__main__':
     main()
