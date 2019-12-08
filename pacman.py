@@ -35,13 +35,17 @@ SOURCE_MENTOR_SHEET_ID = os.getenv('SOURCE_MENTOR_SHEET_ID')
 SOURCE_MENTOR_SHEET_RANGE = os.getenv('SOURCE_MENTOR_SHEET_RANGE')
 
 # destination sheet id and range
-    # total point
+    # total inductee point
 DESTINATION_TOTAL_SHEET_ID = os.getenv('DESTINATION_TOTAL_SHEET_ID')
 DESTINATION_TOTAL_SHEET_RANGE_HEADER = os.getenv('DESTINATION_TOTAL_SHEET_RANGE_HEADER')
 DESTINATION_TOTAL_SHEET_RANGE_BODY = os.getenv('DESTINATION_TOTAL_SHEET_RANGE_BODY')
     # inductee finished
 DESTINATION_DONE_SHEET_ID = os.getenv('DESTINATION_DONE_SHEET_ID')
 DESTINATION_DONE_SHEET_RANGE_BODY = os.getenv('DESTINATION_DONE_SHEET_RANGE_BODY')
+    # total mentor point
+DESTINATION_MENTOR_TOTAL_SHEET_ID = os.getenv('DESTINATION_MENTOR_TOTAL_SHEET_ID')
+DESTINATION_MENTOR_TOTAL_SHEET_RANGE_HEADER = os.getenv('DESTINATION_MENTOR_TOTAL_SHEET_RANGE_HEADER')
+DESTINATION_MENTOR_TOTAL_SHEET_RANGE_BODY = os.getenv('DESTINATION_MENTOR_TOTAL_SHEET_RANGE_BODY')
 
 # enum for updating data (specific to google sheet api)
 from enum import Enum
@@ -175,6 +179,9 @@ def update_total_log_data(service, source_event_data):
     }
     update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_SHEET_RANGE_BODY, value_range_body)
 
+def update_mentor_log_data(service, source_event_data):
+    pass
+
 def update_inductee_list(service, source_event_data):
     # update inductee list
     value_range_body = {
@@ -204,6 +211,9 @@ def main():
 
     # update total log data
     update_total_log_data(service, source_event_data)
+    
+    # update mentor log data
+    update_mentor_total_log_data(service, source_event_data)
 
 if __name__ == '__main__':
     main()
