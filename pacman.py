@@ -200,12 +200,12 @@ def update_mentor_log_data(service, source_event_data):
         mentor_point_dict[row[source_mentor_email_index]] = mentor_point_dict.get(row[source_mentor_email_index].lower(), 0) + 1 
     
     # Overwrite to total log points body
-    mentor_point_dict_values = mentor_point_dict.values()
+    mentor_point_list = sorted(mentor_point_dict.iteritems(), key = lambda x: x[1])
     value_range_body = {
         "majorDimension": Dimension.COLUMNS.value,
         "values": [ 
-            source_event_data.keys(),                                           # email
-            [val.points for val in source_event_data_values],                   # total points
+            [val[0] for val in mentor_point_list],                              # email
+            [val[1] for val in mentor_point_list]                               # total points
         ]
     }
     update_sheet(service, DESTINATION_MENTOR_TOTAL_SHEET_ID, DESTINATION_MENTOR_TOTAL_SHEET_RANGE_BODY, value_range_body)
