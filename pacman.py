@@ -190,7 +190,7 @@ def update_mentor_total_log_data(service, values):
     update_sheet(service, DESTINATION_MENTOR_TOTAL_SHEET_ID, DESTINATION_MENTOR_TOTAL_SHEET_RANGE_HEADER, value_range_body)
 
     # index based on mentor source sheet column
-    source_mentor_email_index = 5
+    source_mentor_email_index = 4
 
     # mentor dictionary count
     mentor_point_dict = {}
