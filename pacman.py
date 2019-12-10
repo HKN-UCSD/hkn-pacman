@@ -200,7 +200,7 @@ def update_mentor_total_log_data(service, values):
         mentor_point_dict[row[source_mentor_email_index]] = mentor_point_dict.get(row[source_mentor_email_index].lower(), 0) + 1 
     
     # Overwrite to total log points body
-    mentor_point_list = sorted(mentor_point_dict.iteritems(), key = lambda x: x[1])
+    mentor_point_list = sorted(mentor_point_dict.iteritems(), key = lambda x: x[1], reverse=True)
     value_range_body = {
         "majorDimension": Dimension.COLUMNS.value,
         "values": [ 
