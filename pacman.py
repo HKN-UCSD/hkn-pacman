@@ -179,7 +179,7 @@ def update_total_log_data(service, source_event_data):
     }
     update_sheet(service, DESTINATION_TOTAL_SHEET_ID, DESTINATION_TOTAL_SHEET_RANGE_BODY, value_range_body)
 
-def update_mentor_totlal_log_data(service, values):
+def update_mentor_total_log_data(service, values):
     # Overwrite to total log points header
     value_range_body = {
         "majorDimension": Dimension.ROWS.value,
