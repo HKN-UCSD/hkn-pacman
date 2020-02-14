@@ -104,9 +104,9 @@ def get_event_data(values):
     # index based on column number of event source sheet
     source_event_data = {}
     source_event_email_index = 1
-    source_event_event_index = 7
-    source_event_point_index = 8
-    source_event_officer_index = 9
+    source_event_event_index = 8
+    source_event_point_index = 9
+    source_event_officer_index = 10
     
     # for each event log
     for row in values:
