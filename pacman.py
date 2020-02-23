@@ -124,6 +124,8 @@ def get_event_data(values):
             source_event_data[row[source_event_email_index].lower()].has_professional = 1
         elif "pitch" in row[source_event_event_index].lower():
             source_event_data[row[source_event_email_index].lower()].has_professional = 1
+        elif "problem solving" in row[source_event_event_index].lower():
+            source_event_data[row[source_event_email_index].lower()].has_professional = 1
 
         # add events
         source_event_data[row[source_event_email_index].lower()].event_list.append(row[source_event_event_index])
